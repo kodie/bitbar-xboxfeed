@@ -1,4 +1,5 @@
 #!/usr/bin/env /usr/local/bin/node
+/* jshint esversion: 6 */
 
 /*
 <bitbar.title>Xbox Feed</bitbar.title>
@@ -121,7 +122,7 @@ if (!error) {
 
         lineProperties += ` image=${img}`;
       }
-      
+
       if (cfg.color) { lineProperties += ` color=${cfg.color}`; }
       if (cfg.font) { lineProperties += ` font=${cfg.font}`; }
       if (cfg.size) { lineProperties += ` size=${cfg.size}`; }
