@@ -2,4 +2,4 @@ language: javascript
 before_install:
   - npm install -g jshint
 script:
-  - jshint xboxfeed.10m.js
+  - jshint .
