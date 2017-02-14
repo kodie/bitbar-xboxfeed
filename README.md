@@ -10,21 +10,16 @@ A plugin for [BitBar](https://github.com/matryer/bitbar) that shows your [Xbox L
 ## Installation
 1. Install Xbox Feed Plugin: ```bitbar://openPlugin?title=Xbox%20Feed&src=https://raw.githubusercontent.com/kodie/bitbar-xboxfeed/master/xboxfeed.10m.js```
 2. `cd` into your BitBar Plugins directory and run the following command: `npm i https://github.com/y-a-v-a/easy-gd.git fs home-config node-time-ago request sync-request`
-3. Refresh Xbox Feed Plugin: ```bitbar://refreshPlugin?name=xboxfeed.*?.js```
-
-You should now see the Xbox logo in your taskbar however we're not done yet! Follow the next steps to setup your API Key:
-
-1. Go to https://xboxapi.com and create a free account.
-2. Connect your Xbox Live account to your newly created Xbox API account and you should receive an API key.
-3. Open `~/.bitbarrc` in your favorite text editor (create the file if it doesn't exist already).
-4. Insert the following and save:
+3. Go to https://xboxapi.com and create a free account.
+4. Connect your Xbox Live account to your newly created Xbox API account and you should receive an API key.
+5. Open `~/.bitbarrc` in your favorite text editor (create the file if it doesn't exist already).
+6. Insert the following and save:
 ```
 [xboxfeed]
 apiKey=YOUR API KEY HERE
 ```
-5. Refresh Xbox Feed Plugin: ```bitbar://refreshPlugin?name=xboxfeed.*?.js```
 
-You should now see your friend's recent activity when you click on the Xbox logo in your taskbar!
+Refresh the plugin and enjoy!
 
 ## Settings
 Along with your apiKey, other settings can be defined in your `~/.bitbarrc` file:
