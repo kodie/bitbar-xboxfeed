@@ -210,4 +210,6 @@ if (process.env.BitBar) {
   console.log('-----');
   console.log('--GitHub Page | href=https://github.com/kodie/bitbar-xboxfeed');
   console.log('--Changelog | href=https://github.com/kodie/bitbar-xboxfeed/blob/master/CHANGELOG.md');
+  console.log('-----');
+  console.log('--Refresh | refresh=true terminal=false');
 }
