@@ -159,6 +159,9 @@ if (!error) {
   if (res.statusCode >= 300) {
     console.log(resBody.error_message);
     error = true;
+  } else if (!resBody || !resBody.activityItems) {
+    console.log('No activity posts found. Try refreshing.');
+    error = true;
   }
 }
 
