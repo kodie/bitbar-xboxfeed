@@ -3,16 +3,17 @@
 
 /*
 <bitbar.title>Xbox Feed</bitbar.title>
-<bitbar.version>v1.0.1</bitbar.version>
+<bitbar.version>v1.1.0</bitbar.version>
 <bitbar.author>Kodie Grantham</bitbar.author>
 <bitbar.author.github>kodie</bitbar.author.github>
 <bitbar.desc>Shows your Xbox Live friend's recent activity - Be sure to read the installation instructions here: https://github.com/kodie/bitbar-xboxfeed</bitbar.desc>
 <bitbar.image>https://raw.githubusercontent.com/kodie/bitbar-xboxfeed/master/screenshot.png</bitbar.image>
-<bitbar.dependencies>node, npm, npm/https://github.com/y-a-v-a/easy-gd.git, npm/fs, npm/home-config, npm/node-time-ago, npm/request, npm/sync-request</bitbar.dependencies>
+<bitbar.dependencies>node, npm, npm/deasync, npm/home-config, npm/jimp, npm/node-time-ago, npm/request</bitbar.dependencies>
+<bitbar.dependencies.npm>npm/deasync, npm/home-config, npm/jimp, npm/node-time-ago, npm/request</bitbar.dependencies>
 <bitbar.abouturl>https://github.com/kodie/bitbar-xboxfeed</bitbar.abouturl>
 */
 
-var ver = '1.0.1';
+var ver = '1.1.0';
 
 var defaults = {
   apiKey: '',
@@ -21,7 +22,7 @@ var defaults = {
   size: false,
   length: false,
   limit: 25,
-  imgSize: 25,
+  imgSize: 20,
   cachePath: '/tmp/xboxfeed',
   cacheExpire: 86400000
 };
@@ -107,10 +108,14 @@ if (process.env.BitBar) {
 
 try {
   var cfg = Object.assign({}, defaults, require('home-config').load('.bitbarrc').xboxfeed);
+  var deasync = require('deasync');
   var fs = require('fs');
-  var gd = require('easy-gd');
-  var request = require('sync-request');
+  var Jimp = require('jimp');
+  var request = require('request');
   var timeAgo = require('node-time-ago');
+
+  var jimpReadSync = deasync(Jimp.read);
+  var requestSync = deasync(request);
 } catch(e) {
   console.log('Error loading dependencies');
   error = true;
@@ -130,11 +135,11 @@ function getImage(gamertag, url) {
       img = fs.readFileSync(imgFile);
       img = new Buffer(img);
     } else {
-      img = request('GET', url).body;
-      img = gd.open(img);
-      img = img.resize({width:cfg.imgSize, height:cfg.imgSize});
-      if (cfg.cachePath) { img.save(imgFile); }
-      img = img.save();
+      img = jimpReadSync(url);
+      img = img.resize(cfg.imgSize, cfg.imgSize);
+      if (cfg.cachePath) { img.write(imgFile); }
+      img.getBufferSync = deasync(img.getBuffer);
+      img = img.getBufferSync('image/png');
     }
 
     img = img.toString('base64');
@@ -146,7 +151,7 @@ function getImage(gamertag, url) {
 
 if (!error) {
   try {
-    var res = request('GET', requestUrl, { headers: { 'X-AUTH': cfg.apiKey } });
+    var res = requestSync({ uri: requestUrl, headers: { 'X-AUTH': cfg.apiKey } });
   } catch(e) {
     console.log('Could not connect to API');
     error = true;
