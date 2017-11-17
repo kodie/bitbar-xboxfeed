@@ -8,12 +8,23 @@ A plugin for [BitBar](https://github.com/matryer/bitbar) that shows your [Xbox L
 * [npm](https://npmjs.com)
 
 ## Installation
-1. Install Xbox Feed Plugin: ```bitbar://openPlugin?title=Xbox%20Feed&src=https://raw.githubusercontent.com/kodie/bitbar-xboxfeed/master/xboxfeed.10m.js```
-2. `cd` into your BitBar Plugins directory and run the following command: `npm i https://github.com/y-a-v-a/easy-gd.git fs home-config node-time-ago request sync-request`
-3. Go to https://xboxapi.com and create a free account.
-4. Connect your Xbox Live account to your newly created Xbox API account and you should receive an API key.
-5. Open `~/.bitbarrc` in your favorite text editor (create the file if it doesn't exist already).
-6. Insert the following and save:
+
+### via [BitBar CLI](https://github.com/kodie/bitbar-cli)
+```
+bitbar install Games/xboxfeed.10m.js
+```
+
+### Manually
+```
+bitbar://openPlugin?title=Xbox%20Feed&src=https://raw.githubusercontent.com/kodie/bitbar-xboxfeed/master/xboxfeed.10m.js
+```
+
+## Setup
+1. After installing the plugin, click on the Xbox icon in your menu bar and select "Run Installation".
+2. Go to https://xboxapi.com and create a free account.
+3. Connect your Xbox Live account to your newly created Xbox API account and you should receive an API key.
+4. Open `~/.bitbarrc` in your favorite text editor (create the file if it doesn't exist already).
+5. Insert the following and save:
 ```
 [xboxfeed]
 apiKey=YOUR API KEY HERE
@@ -56,7 +67,7 @@ Along with your apiKey, other settings can be defined in your `~/.bitbarrc` file
   * Example: `limit=50`
 
 * `imgSize` - User image size in pixels
-  * Default: `25`
+  * Default: `18`
   * Example: `imgSize=50`
   * Setting to false will disable user images display
   * Can be any number from 1-50
@@ -72,9 +83,6 @@ Along with your apiKey, other settings can be defined in your `~/.bitbarrc` file
   * Example: `cacheExpire=604800000`
 
 ## Troubleshooting
-### Error loading dependencies
-The plugin couldn't load it's dependencies. You more than likely haven't finished step 2 in the installation instructions which instructs you how to install the plugin dependency modules via npm.
-
 ### Could not connect to API
 The plugin couldn't connect to the xboxapi.com servers. This means that either their servers are down, Xbox Live servers are down, or you are having internet connectivity problems.
 
