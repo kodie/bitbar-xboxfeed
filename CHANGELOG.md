@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ## [1.1.0] - 2017-11-17
 ### Added
 - [BitBar CLI](https://github.com/kodie/bitbar-cli) dependency installation support.
-- automatic dependency installation setup process.
+- Automatic dependency installation setup process.
 
 ### Changed
 - Fixed compatibility with newer versions of Node ([Issue #1](https://github.com/kodie/bitbar-xboxfeed/issues/1)).
