@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ## [Unreleased]
 
 
+## [1.1.1] - 2017-11-21
+### Changed
+- Fixed `bitbar.dependencies.npm` meta tag.
+
+
 ## [1.1.0] - 2017-11-17
 ### Added
 - [BitBar CLI](https://github.com/kodie/bitbar-cli) dependency installation support.
@@ -30,5 +35,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - Initial release.
 
 [Unreleased]: https://github.com/kodie/bitbar-xboxfeed/compare/v1.0.0...HEAD
+[1.1.1]: https://github.com/kodie/bitbar-xboxfeed/compare/v1.0.1...v1.1.1
 [1.1.0]: https://github.com/kodie/bitbar-xboxfeed/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/kodie/bitbar-xboxfeed/compare/v1.0.0...v1.0.1
